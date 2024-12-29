@@ -58,4 +58,4 @@ Content-Type: application/json
 }
 
 ### Delete car
-DELETE http://localhost:8080/api/cars/5a72102e-8a50-4853-a6b6-ea2d2bb4fd74
+DELETE http://localhost:8080/api/cars/9b3d0ce3-cd39-40ac-912a-646e5084ead0

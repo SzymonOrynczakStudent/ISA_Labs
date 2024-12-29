@@ -41,7 +41,7 @@ public class Car implements Serializable, Comparable<Car> {
     @Column(name = "gearbox")
     private String gearbox;
 
-    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     private List<Rental> rentals;
 
