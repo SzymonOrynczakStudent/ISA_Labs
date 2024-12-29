@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>lab2</artifactId>
+	<artifactId>lab3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ISA_lab2</name>
 	<description>ISA laboratory 2</description>
