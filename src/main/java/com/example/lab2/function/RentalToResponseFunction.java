@@ -9,20 +9,16 @@ import java.util.function.Function;
 @Component
 public class RentalToResponseFunction implements Function<Rental, GetRentalResponse> {
 
-
     @Override
     public GetRentalResponse apply(Rental entity) {
         return GetRentalResponse.builder()
-                .id(entity.getRentalID())
+                .id(entity.getRentalId())
                 .startDate(entity.getStartDate())
                 .endDate(entity.getEndDate())
                 .car(GetRentalResponse.Car.builder()
-                        .id(entity.getCar().getCarID())
-                        .vin(entity.getCar().getVin())
-                        .brand(entity.getCar().getBrand())
-                        .model(entity.getCar().getModel())
-                        .year(entity.getCar().getYear())
-                        .gearbox(entity.getCar().getGearbox())
+                        .id(entity.getCar().getCarId())
+                        .carDetails(String.format("%s %s, %s gearbox",
+                                entity.getCar().getBrand(), entity.getCar().getModel(), entity.getCar().getGearbox()))
                         .build()
                 )
                 .build();

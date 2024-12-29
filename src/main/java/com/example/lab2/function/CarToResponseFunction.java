@@ -11,13 +11,13 @@ public class CarToResponseFunction implements Function<Car, GetCarResponse> {
 
     @Override
     public GetCarResponse apply(Car entity) {
+        String carDetails = String.format("%s %s, %s gearbox", entity.getBrand(), entity.getModel(), entity.getGearbox());
+
         return GetCarResponse.builder()
-                .id(entity.getCarID())
+                .id(entity.getCarId())
                 .vin(entity.getVin())
-                .brand(entity.getBrand())
-                .model(entity.getModel())
                 .year(entity.getYear())
-                .gearbox(entity.getGearbox())
+                .carDetails(carDetails)
                 .build();
     }
 }

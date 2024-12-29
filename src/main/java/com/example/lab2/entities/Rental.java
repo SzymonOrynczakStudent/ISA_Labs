@@ -20,7 +20,7 @@ public class Rental implements Serializable, Comparable<Rental> {
     @Id
     @EqualsAndHashCode.Include
     @Column(name = "id")
-    private UUID rentalID;
+    private UUID rentalId;
 
     @EqualsAndHashCode.Include
     @Column(name = "start_date")
@@ -36,5 +36,5 @@ public class Rental implements Serializable, Comparable<Rental> {
     private Car car;
 
     @Override
-    public int compareTo(Rental r) { return this.rentalID.compareTo(r.rentalID); }
+    public int compareTo(Rental r) { return this.rentalId.compareTo(r.rentalId); }
 }

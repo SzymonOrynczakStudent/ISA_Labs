@@ -15,11 +15,11 @@ public class RequestToRentalFunction implements BiFunction<UUID, PutRentalReques
     @Override
     public Rental apply(UUID id, PutRentalRequest request) {
         return Rental.builder()
-                .rentalID(id)
+                .rentalId(id)
                 .startDate(request.getStartDate())
                 .endDate(request.getEndDate())
                 .car(Car.builder()
-                        .carID(request.getCarId())
+                        .carId(request.getCarId())
                         .build())
                 .build();
     }

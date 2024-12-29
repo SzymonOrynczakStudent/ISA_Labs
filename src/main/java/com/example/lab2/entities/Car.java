@@ -19,7 +19,7 @@ public class Car implements Serializable, Comparable<Car> {
     @Id
     @EqualsAndHashCode.Include
     @Column(name = "id")
-    private UUID carID;
+    private UUID carId;
 
     @EqualsAndHashCode.Include
     @Column(name = "vin", unique = true)

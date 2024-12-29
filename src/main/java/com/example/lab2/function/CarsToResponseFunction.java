@@ -15,12 +15,9 @@ public class CarsToResponseFunction implements Function<List<Car>, GetCarsRespon
         return GetCarsResponse.builder()
                 .cars(entities.stream()
                         .map(car -> GetCarsResponse.Car.builder()
-                                .id(car.getCarID())
-                                .vin(car.getVin())
-                                .brand(car.getBrand())
-                                .model(car.getModel())
-                                .year(car.getYear())
-                                .gearbox(car.getGearbox())
+                                .id(car.getCarId())
+                                .carDetails(String.format("%s %s, %s gearbox",
+                                        car.getBrand(), car.getModel(), car.getGearbox()))
                                 .build())
                         .toList())
                 .build();

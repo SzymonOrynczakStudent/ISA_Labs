@@ -29,11 +29,7 @@ public class GetCarsResponse {
     @EqualsAndHashCode
     public static class Car {
         private UUID id;
-        private String vin;
-        private String brand;
-        private String model;
-        private int year;
-        private String gearbox;
+        private String carDetails;
     }
 
     private List<Car> cars;

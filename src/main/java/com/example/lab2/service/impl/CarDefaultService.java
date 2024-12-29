@@ -1,7 +1,6 @@
 package com.example.lab2.service.impl;
 
 import com.example.lab2.entities.Car;
-import com.example.lab2.entities.Rental;
 import com.example.lab2.repository.CarRepository;
 import com.example.lab2.service.api.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,16 @@ public class CarDefaultService implements CarService {
     @Override
     public void create(Car car) {
         repository.save(car);
+    }
+
+    @Override
+    public void update(Car car) {
+        repository.save(car);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.findById(id).ifPresent(repository::delete);
     }
 
     @Override

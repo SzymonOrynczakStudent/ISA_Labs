@@ -3,18 +3,23 @@ package com.example.lab2.controller.impl;
 import com.example.lab2.controller.api.RentalController;
 import com.example.lab2.dto.GetRentalResponse;
 import com.example.lab2.dto.GetRentalsResponse;
+import com.example.lab2.dto.PatchRentalRequest;
 import com.example.lab2.dto.PutRentalRequest;
 import com.example.lab2.function.RentalToResponseFunction;
 import com.example.lab2.function.RentalsToResponseFunction;
 import com.example.lab2.function.RequestToRentalFunction;
+import com.example.lab2.function.UpdateRentalWithRequestFunction;
 import com.example.lab2.service.api.RentalService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.util.NoSuchElementException;
 import java.util.UUID;
 
-@Controller
+@RestController
+@Log
 public class RentalDefaultController implements RentalController {
 
     private final RentalService service;
@@ -25,17 +30,22 @@ public class RentalDefaultController implements RentalController {
 
     private final RequestToRentalFunction requestToRental;
 
+    private final UpdateRentalWithRequestFunction updateRentalRequest;
+
+
     @Autowired
     public RentalDefaultController(
             RentalService service,
             RentalToResponseFunction rentalToResponse,
             RentalsToResponseFunction rentalsToResponse,
-            RequestToRentalFunction requestToRentalFunction
+            RequestToRentalFunction requestToRentalFunction,
+            UpdateRentalWithRequestFunction updateRentalRequest
     ) {
         this.service = service;
         this.rentalToResponse = rentalToResponse;
         this.rentalsToResponse = rentalsToResponse;
         this.requestToRental = requestToRentalFunction;
+        this.updateRentalRequest = updateRentalRequest;
     }
 
     @Override
@@ -47,21 +57,19 @@ public class RentalDefaultController implements RentalController {
     public GetRentalsResponse getCarRentals(UUID carId) {
         return service.findAllByCar(carId)
                 .map(rentalsToResponse)
-                .orElseThrow(NoSuchElementException::new);
-    }
-
-    @Override
-    public GetRentalsResponse getCarRentals(String vin) {
-        return service.findAllByCar(vin)
-                .map(rentalsToResponse)
-                .orElseThrow(NoSuchElementException::new);
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Override
     public GetRentalResponse getRental(UUID id) {
         return service.find(id)
                 .map(rentalToResponse)
-                .orElseThrow(NoSuchElementException::new);
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @Override
+    public void updateRental(UUID id, PatchRentalRequest request) {
+        service.update(updateRentalRequest.apply(id, request));
     }
 
     @Override
@@ -71,6 +79,14 @@ public class RentalDefaultController implements RentalController {
 
     @Override
     public void deleteRental(UUID id) {
-        service.delete(id);
+        service.find(id)
+                .ifPresentOrElse(
+                    rental -> service.delete(id),
+                    () -> {
+                        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                }
+        );
+
+
     }
 }

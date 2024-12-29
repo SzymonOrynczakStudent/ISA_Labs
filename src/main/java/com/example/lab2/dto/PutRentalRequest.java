@@ -25,6 +25,4 @@ public class PutRentalRequest {
     private LocalDate startDate;
     private LocalDate endDate;
     private UUID carId;
-    private String vin;
-
 }

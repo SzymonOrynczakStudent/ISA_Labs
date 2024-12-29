@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.UUID;
-
-
 @Getter
 @Setter
 @Builder
@@ -19,11 +16,11 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class GetCarResponse {
+public class PatchCarRequest {
 
-    private UUID id;
     private String vin;
+    private String brand;
+    private String model;
     private int year;
-    private String carDetails;
-
+    private String gearbox;
 }

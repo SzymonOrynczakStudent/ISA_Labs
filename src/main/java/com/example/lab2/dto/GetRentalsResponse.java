@@ -1,5 +1,6 @@
 package com.example.lab2.dto;
 
+import com.example.lab2.entities.Car;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,9 +33,11 @@ public class GetRentalsResponse {
     @EqualsAndHashCode
     public static class Rental {
         private UUID id;
+        private String startDate;
+        private String endDate;
+        private String carDetails;
     }
 
     @Singular
     private List<Rental> rentals;
-
 }

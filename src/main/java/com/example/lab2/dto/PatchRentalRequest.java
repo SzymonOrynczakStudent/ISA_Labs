@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -22,5 +23,6 @@ public class PatchRentalRequest {
 
     private LocalDate startDate;
     private LocalDate endDate;
+    private UUID carId;
 
 }

@@ -12,5 +12,7 @@ public interface CarService {
     Optional<Car> find(String vin);
     List<Car> findAll();
     void create(Car car);
+    void update(Car car);
+    void delete(UUID id);
 
 }

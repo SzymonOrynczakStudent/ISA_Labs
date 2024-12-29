@@ -15,7 +15,13 @@ public class RentalsToResponseFunction implements Function<List<Rental>, GetRent
         return GetRentalsResponse.builder()
                 .rentals(entities.stream()
                         .map(rental -> GetRentalsResponse.Rental.builder()
-                                .id(rental.getRentalID())
+                                .id(rental.getRentalId())
+                                .startDate(rental.getStartDate().toString())
+                                .endDate(rental.getEndDate().toString())
+                                .carDetails(String.format("%s %s, %s gearbox",
+                                        rental.getCar().getBrand(),
+                                        rental.getCar().getModel(),
+                                        rental.getCar().getGearbox()))
                                 .build())
                         .toList())
                 .build();

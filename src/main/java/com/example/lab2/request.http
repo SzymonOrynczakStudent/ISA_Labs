@@ -1,0 +1,61 @@
+### Get all rentals
+GET http://localhost:8080/api/rentals
+
+### Get specific rental
+GET http://localhost:8080/api/rentals/2d50af6e-53ff-49b2-a259-d29f4e594106
+
+### Get rental, not existing
+GET http://localhost:8080/api/characters/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+
+### Get all cars
+GET http://localhost:8080/api/cars
+
+### Get specific car
+GET http://localhost:8080/api/cars/ed0707e5-fc53-4412-8221-4c50811816a0
+
+### Get car rentals
+GET http://localhost:8080/api/cars/9b3d0ce3-cd39-40ac-912a-646e5084ead0/rentals
+
+### Put rental
+PUT http://localhost:8080/api/rentals/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+
+{
+  "startDate": "2024-10-12",
+  "endDate": "2024-10-15",
+  "carId": "9d9d1636-aa96-4efc-9b37-4a4c27a3486f"
+}
+
+### Update rental
+PATCH http://localhost:8080/api/rentals/15a21b67-675e-4b56-b0fb-326adfdfa421
+Content-Type: application/json
+
+{
+  "endDate": "2024-10-16"
+}
+
+### Delete rental
+DELETE  http://localhost:8080/api/rentals/15a21b67-675e-4b56-b0fb-326adfdfa421
+
+### Put car
+PUT http://localhost:8080/api/cars/5a72102e-8a50-4853-a6b6-ea2d2bb4fd74
+Content-Type: application/json
+
+{
+  "vin": "new_vin123",
+  "brand": "Hyundai",
+  "model": "i30",
+  "year": 2022,
+  "gearbox": "auto"
+}
+
+### Update car
+PATCH http://localhost:8080/api/cars/5a72102e-8a50-4853-a6b6-ea2d2bb4fd74
+Content-Type: application/json
+
+{
+  "vin": "1RTY82633A153745"
+}
+
+### Delete car
+DELETE http://localhost:8080/api/cars/5a72102e-8a50-4853-a6b6-ea2d2bb4fd74
