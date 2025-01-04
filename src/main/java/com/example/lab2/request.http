@@ -31,11 +31,12 @@ PATCH http://localhost:8080/api/rentals/15a21b67-675e-4b56-b0fb-326adfdfa421
 Content-Type: application/json
 
 {
-  "endDate": "2024-10-16"
+  "endDate": "2024-10-16",
+  "carId": "5a72102e-8a50-4853-a6b6-ea2d2bb4fd74"
 }
 
 ### Delete rental
-DELETE  http://localhost:8080/api/rentals/15a21b67-675e-4b56-b0fb-326adfdfa421
+DELETE  http://localhost:8080/api/rentals/2d50af6e-53ff-49b2-a259-d29f4e594106
 
 ### Put car
 PUT http://localhost:8080/api/cars/5a72102e-8a50-4853-a6b6-ea2d2bb4fd74
@@ -50,7 +51,7 @@ Content-Type: application/json
 }
 
 ### Update car
-PATCH http://localhost:8080/api/cars/5a72102e-8a50-4853-a6b6-ea2d2bb4fd74
+PATCH http://localhost:8080/api/cars/9b3d0ce3-cd39-40ac-912a-646e5084ead0
 Content-Type: application/json
 
 {

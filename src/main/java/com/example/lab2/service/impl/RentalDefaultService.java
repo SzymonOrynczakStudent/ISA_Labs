@@ -43,7 +43,6 @@ public class RentalDefaultService implements RentalService {
         repository.save(rental);
     }
 
-    // TODO: naprawić tę funkcję tak, żeby nie trzeba było podawać carId w requeście.
     @Override
     public void update(Rental rental) { repository.save(rental); }
 

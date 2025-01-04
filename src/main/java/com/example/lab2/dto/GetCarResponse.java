@@ -22,7 +22,6 @@ import java.util.UUID;
 public class GetCarResponse {
 
     private UUID id;
-    private String vin;
     private int year;
     private String carDetails;
 

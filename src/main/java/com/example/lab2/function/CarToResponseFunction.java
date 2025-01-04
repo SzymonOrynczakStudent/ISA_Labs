@@ -15,7 +15,6 @@ public class CarToResponseFunction implements Function<Car, GetCarResponse> {
 
         return GetCarResponse.builder()
                 .id(entity.getCarId())
-                .vin(entity.getVin())
                 .year(entity.getYear())
                 .carDetails(carDetails)
                 .build();
