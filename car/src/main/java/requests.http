@@ -1,0 +1,35 @@
+### GET ALL CARS
+
+GET http://localhost:8082/api/cars
+
+### GEL SINGLE CAR
+
+GET http://localhost:8082/api/cars/9d9d1636-aa96-4efc-9b37-4a4c27a3486f
+
+### GET SINGLE CAR, NOT EXISTING
+
+GET http://localhost:8082/api/cars/f5875513-bf7b-4ae1-b8a5-5b70a1b90e76
+
+### Put car
+PUT http://localhost:8082/api/cars/5a72102e-8a50-4853-a6b6-ea2d2bb4fd74
+Content-Type: application/json
+
+{
+  "vin": "new_vin123",
+  "brand": "Hyundai",
+  "model": "i30",
+  "year": 2022,
+  "gearbox": "auto"
+}
+
+### Update car
+PATCH http://localhost:8082/api/cars/9b3d0ce3-cd39-40ac-912a-646e5084ead0
+Content-Type: application/json
+
+{
+  "brand": "Ferrari"
+}
+
+### DELETE CAR
+
+DELETE http://localhost:8082/api/cars/9d9d1636-aa96-4efc-9b37-4a4c27a3486f
